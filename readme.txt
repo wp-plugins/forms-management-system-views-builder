@@ -1,17 +1,17 @@
 === Forms Management System Views Builder ===
 Contributors: Engr.MTH, MOSTASHAROON
-Donate link: https://mostasharoon.org/buy-us-a-coffee/
+Donate link: http://mostasharoon.org/buy-us-a-coffee/
 Tags: forms management system, visual builder, custom fields, custom post type, form, forms, mostasharoon,views
 Requires at least: 3.5
-Tested up to: 4.2.2
-Stable tag: 1.0
+Tested up to: 4.2.4
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-> This Plugin requires [Forms Management System](https://mostasharoon.org/wordpress/plugins/forms-management-system/).
-> We don't give any support to this plugin here, if you need any help please feel free to contact us through our [support page](https://mostasharoon.org/support/).
+> This Plugin requires [Forms Management System](http://mostasharoon.org/wordpress/plugins/forms-management-system/).
+> We don't give any support to this plugin here, if you need any help please feel free to contact us through our [support page](http://mostasharoon.org/support/).
 
 Forms Management System Views Builder is a free add-on allows you to display the custom fields at the frontend with easiest way possible.
 
@@ -26,7 +26,7 @@ Features of the plugin include:
 
 == Installation ==
 
-1. Upload the entire `fms-views-builder` folder to the `/wp-content/plugins/` directory
+1. Upload the entire `forms-management-system-views-builder` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Go to FMS => Views => to create a new view
 4. Go to FMS => Views Settings and configure the plugin
@@ -35,9 +35,12 @@ Features of the plugin include:
 
 = Where Can I Get Support For This Plugin? =
 
-We don't give any support to this plugin here, if you need any help please feel free to contact us through our [support page](https://mostasharoon.org/support/).
+We don't give any support to this plugin here, if you need any help please feel free to contact us through our [support page](http://mostasharoon.org/support/).
 
 == Changelog ==
+
+= 1.1 =
+* New: Added new hooks.
 
 = 1.0 =
 * initial release

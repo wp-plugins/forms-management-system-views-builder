@@ -4,15 +4,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 } // Exit if accessed directly
 /*
   Plugin Name: Forms Management System Views Builder
-  Plugin URI: https://mostasharoon.org
+  Plugin URI: http://mostasharoon.org
   Description: An easy way to display the custom fields at the frontend.
-  Version: 1.0
+  Version: 1.1
   Author: Mohammed Thaer
-  Author URI: https://mostasharoon.org
+  Author URI: http://mostasharoon.org
   Text Domain: fvb
  */
 
-define( 'FVB_VERSION', '1.0' );
+define( 'FVB_VERSION', '1.1' );
 
 /* ----------------------------------------------------------------------------------- */
 /* 	Includes required files.
@@ -40,7 +40,7 @@ function fvb_no_fms_warning() {
 	<div class="message error">
 		<p><?php printf( __( 'FMS Views Builder is enabled but not effective. It requires <a href="%s">FMS</a> in order to work.', 'fvb' ),
 				'https://mostasharoon.org/wordpress/plugins/forms-management-system/' ); ?></p></div>
-<?php
+	<?php
 }
 
 function fvb_old_fms_warning() {
@@ -48,7 +48,7 @@ function fvb_old_fms_warning() {
 	<div class="message error">
 		<p><?php printf( __( 'FMS Views Builder is enabled but not effective. It is not compatible with  <a href="%s">FMS</a> versions prior 1.9.', 'fvb' ),
 				'https://mostasharoon.org/wordpress/plugins/forms-management-system/' ); ?></p></div>
-<?php
+	<?php
 }
 
 // Dir to the plugin
@@ -70,3 +70,5 @@ require_once( 'includes/fvb-functions.php' );
 require_once( 'classes/admin/FVB_Settings.php' );
 require_once( 'classes/frontend/FVB_Core.php' );
 require_once( 'classes/admin/FVB_View_Post_Type.php' );
+
+//todo Mohammed adding hooks to modify the values before displaying it on the frontend for example hook allow to convert the url to anchor tag (a).

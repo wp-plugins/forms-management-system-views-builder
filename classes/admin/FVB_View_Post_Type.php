@@ -269,7 +269,7 @@ class FVB_Views {
 				</div>
 			</div>
 		</div>
-	<?php
+		<?php
 	}
 
 	function field_renderer( $fields ) {

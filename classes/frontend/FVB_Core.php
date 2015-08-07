@@ -17,6 +17,11 @@ class FVB_Core {
 
 		global $post;
 		$form_id = get_post_meta( $post->ID, '_fms_form_id', true );
+
+		if ( empty ( $form_id ) ) {
+			return $content;
+		}
+
 		//get the post from the meta key
 		$args = array(
 			'post_type'  => 'fvb_views',
@@ -42,10 +47,6 @@ class FVB_Core {
 			$wrapper_class = empty( $view_settings['wrapper_class'] ) ? '' : $view_settings['wrapper_class'] . ' ';
 
 			return $content . '<br />' . '<div class="' . $wrapper_class . 'isa_error"><span>' . $view_settings['restriction_message'] . '</span></div>';
-		}
-
-		if ( empty ( $form_id ) ) {
-			return $content;
 		}
 
 		$fields_html = $this->get_custom_fields( $form_id, $view_settings );
@@ -104,7 +105,6 @@ class FVB_Core {
 //				if ( ! isset( $field['name'] ) ) {
 //					continue;
 //				}
-
 //				if ( in_array( $field['template'], $useless_fields ) ) {
 //					continue;
 //				}
@@ -114,6 +114,7 @@ class FVB_Core {
 		}
 
 		$html .= '</div>';
+		$html = apply_filters( 'fvb_fields_html', $html, $form_id, $view_settings );
 
 		return $html;
 	}
@@ -146,9 +147,9 @@ class FVB_Core {
 			$html .= ! empty( $field['new_label'] ) ? '<p><strong>' . $field['new_label'] . ': </strong>' : '<p>';
 
 			if ( is_array( $value ) ) {
-				$html .= implode( ', ', $value );
+				$html .= apply_filters( 'fvb_field_value', implode( ', ', $value ), $field, $view_settings );
 			} else {
-				$html .= $value;
+				$html .= apply_filters( 'fvb_field_value', $value, $field, $view_settings );
 			}
 			$html .= '</p>';
 
@@ -156,6 +157,7 @@ class FVB_Core {
 
 			$html .= ! empty( $field['new_label'] ) ? '<p><strong>' . $field['new_label'] . ': </strong><br />' : '<p>';
 			if ( is_array( $value ) ) {
+
 				if ( $field['template'] == 'image_upload' ) {
 					$html .= '<div class="fms-container">';
 				}
@@ -165,10 +167,15 @@ class FVB_Core {
 					$url           = esc_url( wp_get_attachment_url( $attachment_id ) );
 
 					if ( $field['template'] == 'image_upload' ) {
-						$html .= '<div class="fms-item"> <a class="fms-gallery" href="' . $url . '"><img src="' . $url . '" height="140" width="140"></a></div>';
+						$field_html = '<div class="fms-item"> <a class="fms-gallery" href="' . $url . '"><img src="' . $url . '" height="140" width="140"></a></div>';
+						$field_html = apply_filters( 'fvb_field_value', $field_html, $field, $view_settings );
+						$html .= $field_html;
 					} else {
-						$html .= '<a href="' . $url . '">' . basename( $url ) . '</a><br />';
+						$field_html = '<a href="' . $url . '">' . basename( $url ) . '</a><br />';
+						$field_html = apply_filters( 'fvb_field_value', $field_html, $field, $view_settings );
+						$html .= $field_html;
 					}
+
 				}
 
 				if ( $field['template'] == 'image_upload' ) {
@@ -178,6 +185,8 @@ class FVB_Core {
 			}
 			$html .= '</p>';
 		}
+
+		$html = apply_filters( 'fvb_field_html', $html, $field, $value, $view_settings );
 
 		return $html;
 	}

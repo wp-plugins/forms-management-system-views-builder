@@ -69,7 +69,7 @@ class FVB_Settings {
 				</div>
 			</div>
 		</div>
-	<?php
+		<?php
 	}
 
 	function admin_scripts() {

@@ -28,7 +28,7 @@ function fvb_get_contact_forms() {
 
 function fvb_get_posting_forms() {
 	$array = array();
-	$forms = get_posts( array( 'post_type' => 'fms_forms', 'numberposts' => - 1 ) );
+	$forms = get_posts( array( 'post_type' => 'fms_forms', 'numberposts' => - 1, 'suppress_filters' => false ) );
 
 	$array[0] = __( 'Select Form', 'fvb' );
 	if ( $forms ) {
